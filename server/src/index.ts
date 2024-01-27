@@ -33,7 +33,7 @@ app.post('/accesstoken', async (req: Request, res: Response) => {
   try {
     const { code } = req.body;
     const decode = decodeURI(code);
-    const tokenEndpoint = 'https://open.tiktokapis.com/v2/oauth/token/';
+    const token = 'https://open.tiktokapis.com/v2/oauth/token/';
     const params = {
       client_key: `${process.env.CLIENT_KEY}`,
       client_secret: `${process.env.SECRETS}`,
@@ -42,16 +42,12 @@ app.post('/accesstoken', async (req: Request, res: Response) => {
       redirect_uri: `${process.env.REDIRECT_URL}`,
     };
 
-    const response = await axios.post(
-      tokenEndpoint,
-      querystring.stringify(params),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Cache-Control': 'no-cache',
-        },
+    const response = await axios.post(token, querystring.stringify(params), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cache-Control': 'no-cache',
       },
-    );
+    });
 
     if (response.data.access_token) {
       const videoStream = await axios.post(

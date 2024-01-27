@@ -7,8 +7,7 @@ interface VideoWrapper {
 const VideoWrapper = ({ videoUrl }: VideoWrapper) => {
   return (
     <iframe
-      width='100%'
-      height='500'
+      height='530'
       src={videoUrl}
       allow='encrypted-media;'
       allowFullScreen
