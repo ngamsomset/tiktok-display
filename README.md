@@ -19,10 +19,12 @@ Tasks
 
 This application test by using `ngrok` as a reverse proxy.
 
+- run `npm install`.
 - make sure you have `.env` in your `/server` directory.
 - to start server run `npm run dev`.
 
 ### frontend
 
+- run `npm install`.
 - run `npm run dev` to start localserver.
 - make sure that your redirect url mapped to correct port of your frontend.
